@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
+    <Authors>Rob Lohmann</Authors>
+    <PackageIconUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</RepositoryUrl>
+    <PackageTags>aspnetcore healthcheck versionnumber</PackageTags>
+    <Description>Small library with extensions on the Microsoft.Extensions.Diagnostics.HealthCheck library to add a versionnumber to the raw output of the healthcheck</Description>
   </PropertyGroup>
 
   <ItemGroup>
