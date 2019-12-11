@@ -26,6 +26,8 @@ namespace Sample.NETCore22
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +45,8 @@ namespace Sample.NETCore22
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.usehea
         }
     }
 }
