@@ -46,7 +46,7 @@ namespace Sample.NETCore22
             app.UseHttpsRedirection();
             app.UseMvc();
 
-            app.usehea
+            //app.usehea
         }
     }
 }
