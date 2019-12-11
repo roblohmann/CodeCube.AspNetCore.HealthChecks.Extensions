@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CodeCube.AspNetCore.HealthChecks.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,7 +28,7 @@ namespace Sample.NETCore22
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddHealthChecks();
+            services.AddHealthChecks().AddApplicationInsightsPublisher();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +47,7 @@ namespace Sample.NETCore22
             app.UseHttpsRedirection();
             app.UseMvc();
 
-            //app.usehea
+            app.UseHealthChecksWithVersioning("/health", "Sample.NETCore22");
         }
     }
 }
