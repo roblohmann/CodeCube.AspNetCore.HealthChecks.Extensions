@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
     <Authors>Rob Lohmann</Authors>
     <PackageIconUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
     <PackageProjectUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</PackageProjectUrl>
