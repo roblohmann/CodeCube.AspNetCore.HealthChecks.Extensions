@@ -52,7 +52,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions
                 string result;
                 if (responseAsJson)
                 {
-                    httpContext.Response.ContentType = MediaTypeNames.Application.Json;
+                    httpContext.Response.ContentType = "application/json";
                     result = CreateResponseAsJSON(healthReport, version);
                 }
                 else
@@ -83,9 +83,9 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions
             {
                 result = $"{result} | Entries: ";
 
-                foreach (var (key, value) in healthReport.Entries)
+                foreach (var entry in healthReport.Entries)
                 {
-                    result = $"{result} {key}:{value.Status}";
+                    result = $"{result} {entry.Key}:{entry.Value.Status}";
                 }
             }
 
