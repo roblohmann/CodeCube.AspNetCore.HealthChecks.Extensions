@@ -5,11 +5,22 @@ Small library with extensions on AspNetCore.Diagnostics.HealthChecks
 The steps below describe how this package can be used after installing it.
 Implementing it should be done in the Startup.cs for your .NET Core project (>= 2.2).
 
+### Configure Services
+```` C#
+public void ConfigureServices(IServiceCollection services)
+{
+    //Your other code
+    
+    services.AddHealthChecks();
+}
+````
+
+
 #### Default implementation
 ``` C#
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
-    //Other code
+    //Your other code
 
     app.UseHealthChecksWithVersioning("/health");
 }
