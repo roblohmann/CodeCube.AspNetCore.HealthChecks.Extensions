@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -44,10 +46,17 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Uris
                         requestMessage.Headers.Add(Name, Value);
                     }
 
+                    string deploymentVersionHeader = null;
+
                     using (var timeoutSource = new CancellationTokenSource(timeout))
                     using (var linkedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, cancellationToken))
                     {
                         var response = await httpClient.SendAsync(requestMessage, linkedSource.Token);
+
+                        if(response.Headers.Contains("x-deployment-version") && response.Headers.TryGetValues("x-deployment-version", out IEnumerable<string> headerValues))
+                        {
+                            deploymentVersionHeader = headerValues.SingleOrDefault();
+                        }
 
                         if (!((int)response.StatusCode >= expectedStatusCodes.Min && (int)response.StatusCode <= expectedStatusCodes.Max))
                         {

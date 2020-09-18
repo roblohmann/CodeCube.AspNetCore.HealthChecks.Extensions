@@ -32,8 +32,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Uris.DependencyInjection
                 registrationName,
                 sp =>
                 {
-                    var options = new UriHealthCheckOptions()
-                        .AddUri(uri);
+                    var options = new UriHealthCheckOptions().AddUri(uri);
 
                     return CreateHealthCheck(sp, registrationName, options);
                 },
