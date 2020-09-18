@@ -10,8 +10,5 @@
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.Publisher.ApplicationInsights" Version="3.0.1" />
     <PackageReference Include="CodeCube.AspNetCore.HealthChecks.Extensions" Version="1.0.193454" />
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
-
 </Project>

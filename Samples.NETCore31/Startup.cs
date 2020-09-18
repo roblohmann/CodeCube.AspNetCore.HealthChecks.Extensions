@@ -1,4 +1,5 @@
 ﻿using CodeCube.AspNetCore.HealthChecks.Extensions;
+using CodeCube.AspNetCore.HealthChecks.Extensions.Versioning;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
