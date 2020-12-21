@@ -42,11 +42,11 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
         #region privates
         private static Func<HttpContext, HealthReport, Task> CreateResponse(string assemblyName = null, bool responseAsJson = false)
         {
-            if (responseAsJson)
-                return ResponseWriters.AsJson();
-
             var theAssembly = !string.IsNullOrWhiteSpace(assemblyName) ? Assembly.Load(assemblyName) : Assembly.GetExecutingAssembly();
             var version = FileVersionInfo.GetVersionInfo(theAssembly.Location).FileVersion;
+
+            if (responseAsJson)
+                return ResponseWriters.AsJson(version);
 
             return ResponseWriters.AsText(version);
         }
