@@ -41,7 +41,9 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Response
                     {
                         Key = e.Key,
                         Value = Enum.GetName(typeof(HealthStatus), e.Value.Status),
-                        Description = e.Value.Description
+                        Error = e.Value.Exception?.GetBaseException().Message,
+                        Description = e.Value.Description,
+                        Data = e.Value.Data.ToArray()
                     })
                 });
         }

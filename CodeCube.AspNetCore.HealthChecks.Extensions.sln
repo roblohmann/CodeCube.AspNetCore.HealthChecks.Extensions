@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCube.AspNetCore.HealthC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCube.AspNetCore.HealthChecks.Extensions.Response", "CodeCube.AspNetCore.HealthChecks.Extensions.Response\CodeCube.AspNetCore.HealthChecks.Extensions.Response.csproj", "{DEB546A9-74E6-49A4-8085-1F97EB5AB700}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning", "CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning\CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.csproj", "{67DE352E-AF03-4864-BD3F-EF24EDF3370D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{DEB546A9-74E6-49A4-8085-1F97EB5AB700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEB546A9-74E6-49A4-8085-1F97EB5AB700}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEB546A9-74E6-49A4-8085-1F97EB5AB700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67DE352E-AF03-4864-BD3F-EF24EDF3370D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67DE352E-AF03-4864-BD3F-EF24EDF3370D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67DE352E-AF03-4864-BD3F-EF24EDF3370D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67DE352E-AF03-4864-BD3F-EF24EDF3370D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

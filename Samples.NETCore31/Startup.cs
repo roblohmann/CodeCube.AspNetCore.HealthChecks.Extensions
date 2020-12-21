@@ -1,6 +1,6 @@
 ﻿using System;
-using CodeCube.AspNetCore.HealthChecks.Extensions;
-using CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning;
+using CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.DependencyInjection;
+using CodeCube.AspNetCore.HealthChecks.Extensions.Versioning;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,10 +24,11 @@ namespace Samples.NETCore31
             services.AddHealthChecks()
                 .AddUrlGroup(options =>
                 {
-                    options.AddUri(new Uri("https://service-regitratie-o.ecare.nu"), setup =>
+                    options.AddUri(new Uri("https://service-registratie-o.ecare.nu/healthz"), setup =>
                     {
-                        setup.AddCustomHeader("x-application-version", "123");
+                        setup.WithVersioningHeader("server");
                     });
+
                 })
                 .AddApplicationInsightsPublisher();
         }
