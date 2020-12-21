@@ -24,7 +24,7 @@ namespace Samples.NETCore31
             services.AddHealthChecks()
                 .AddUrlGroup(options =>
                 {
-                    options.AddUri(new Uri("https://service-registratie-o.ecare.nu/healthz"), setup =>
+                    options.AddUri(new Uri("https://www.google.com"), setup =>
                     {
                         setup.WithVersioningHeader("server");
                     });
