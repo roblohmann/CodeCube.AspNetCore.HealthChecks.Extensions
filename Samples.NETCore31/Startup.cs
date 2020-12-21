@@ -1,5 +1,6 @@
-﻿using CodeCube.AspNetCore.HealthChecks.Extensions;
-using CodeCube.AspNetCore.HealthChecks.Extensions.Versioning;
+﻿using System;
+using CodeCube.AspNetCore.HealthChecks.Extensions;
+using CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,7 +21,15 @@ namespace Samples.NETCore31
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHealthChecks().AddApplicationInsightsPublisher();
+            services.AddHealthChecks()
+                .AddUrlGroup(options =>
+                {
+                    options.AddUri(new Uri("https://service-regitratie-o.ecare.nu"), setup =>
+                    {
+                        setup.AddCustomHeader("x-application-version", "123");
+                    });
+                })
+                .AddApplicationInsightsPublisher();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,8 +46,8 @@ namespace Samples.NETCore31
             }
 
             app.UseHttpsRedirection();
-
-            app.UseHealthChecksWithVersioning("/health", "Samples.NETCore31");
+            app.UseHealthChecksWithVersioning("/healthz", "Samples.NETCore31", true);
+            //app.UseHealthChecks("/healthz");
         }
     }
 }
