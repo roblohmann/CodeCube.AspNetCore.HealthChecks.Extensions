@@ -13,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{AC757C99-1BA8-4677-A60D-A31A0F4F0508}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.NETCore22", "Sample.NETCore22\Sample.NETCore22.csproj", "{F6536E19-DAEF-4525-9271-0F110314DDB3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.NETCore31", "Samples.NETCore31\Samples.NETCore31.csproj", "{762EEB8B-5DBD-4C5F-BAD3-0F8B2C636959}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCube.AspNetCore.HealthChecks.Extensions.Versioning", "CodeCube.AspNetCore.HealthChecks.Extensions.Versioning\CodeCube.AspNetCore.HealthChecks.Extensions.Versioning.csproj", "{D68E7F62-EEAC-43FF-AD92-3C5E66F07EEF}"
@@ -27,10 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F6536E19-DAEF-4525-9271-0F110314DDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6536E19-DAEF-4525-9271-0F110314DDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6536E19-DAEF-4525-9271-0F110314DDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6536E19-DAEF-4525-9271-0F110314DDB3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{762EEB8B-5DBD-4C5F-BAD3-0F8B2C636959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{762EEB8B-5DBD-4C5F-BAD3-0F8B2C636959}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{762EEB8B-5DBD-4C5F-BAD3-0F8B2C636959}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -48,7 +42,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F6536E19-DAEF-4525-9271-0F110314DDB3} = {AC757C99-1BA8-4677-A60D-A31A0F4F0508}
 		{762EEB8B-5DBD-4C5F-BAD3-0F8B2C636959} = {AC757C99-1BA8-4677-A60D-A31A0F4F0508}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
