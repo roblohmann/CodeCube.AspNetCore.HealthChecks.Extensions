@@ -1,0 +1,98 @@
+name: .NET
+
+env:
+  # Project name to pack and publish.
+  PROJECT_NAME:  'CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning'
+  
+  # GitHub Packages Feed settings
+  GITHUB_FEED: https://nuget.pkg.github.com/roblohmann/
+  GITHUB_USER: roblohmann
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  # Official NuGet Feed settings
+  NUGET_FEED: https://api.nuget.org/v3/index.json
+  NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
+
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types:
+      - published
+  
+  #Allow manual trigger of build
+  #workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    - name: Pack      
+      run: dotnet pack -v normal -c Release --no-restore --include-symbols --include-source -p:PackageVersion=1.0.$GITHUB_RUN_ID-alpha src/$PROJECT_NAME/$PROJECT_NAME.*proj
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: nupkg
+        path: ./src/${{ env.PROJECT_NAME }}/bin/Release/*.nupkg
+  
+  prerelease:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: nupkg
+      - name: Push to GitHub Feed
+        run: |
+          for f in ./nupkg/*.nupkg
+          do
+            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
+          done   
+          
+  release:
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: github.event_name == 'release'    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.301
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+      - name: Pack for Release
+        run: |
+          arrTag=(${GITHUB_REF//\// })
+          VERSION="${arrTag[2]}"
+          VERSION="${VERSION//v}"
+          dotnet pack -v normal -c Release -p:PackageVersion=$VERSION -o nupkg src/$PROJECT_NAME/$PROJECT_NAME.*proj
+      - name: Push to GitHub Feed
+        run: |
+          for f in ./nupkg/*.nupkg
+          do
+            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
+          done
+      - name: Push to NuGet Feed
+        run: dotnet nuget push ./nupkg/*.nupkg --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY
+    
+    
