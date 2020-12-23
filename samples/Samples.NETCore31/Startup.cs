@@ -28,6 +28,10 @@ namespace Samples.NETCore31
                     {
                         setup.WithVersioningHeader("server");
                     });
+                    options.AddUri(new Uri("https://www.google.nl"), setup =>
+                    {
+                        setup.WithVersioningHeader("server");
+                    });
 
                 })
                 .AddApplicationInsightsPublisher();
