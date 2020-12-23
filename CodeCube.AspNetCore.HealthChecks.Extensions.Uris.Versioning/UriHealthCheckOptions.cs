@@ -13,7 +13,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning
         IUriOptions ExpectHttpCode(int codeToExpect);
         IUriOptions ExpectHttpCodes(int minCodeToExpect, int maxCodeToExpect);
         IUriOptions AddCustomHeader(string name, string value);
-        IUriOptions WithVersioningHeader(string headername);
+        IUriOptions WithVersioningHeader(string headername = "x-application-version");
     }
     public class UriOptions : IUriOptions
     {
