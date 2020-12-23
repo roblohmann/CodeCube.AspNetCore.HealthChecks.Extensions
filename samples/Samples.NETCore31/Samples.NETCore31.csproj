@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning\CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.csproj" />
-    <ProjectReference Include="..\CodeCube.AspNetCore.HealthChecks.Extensions.Versioning\CodeCube.AspNetCore.HealthChecks.Extensions.Versioning.csproj" />
+    <ProjectReference Include="..\..\src\CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning\CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.csproj" />
+    <ProjectReference Include="..\..\src\CodeCube.AspNetCore.HealthChecks.Extensions.Versioning\CodeCube.AspNetCore.HealthChecks.Extensions.Versioning.csproj" />
   </ItemGroup>
 </Project>

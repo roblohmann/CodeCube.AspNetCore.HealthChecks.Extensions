@@ -22,7 +22,7 @@ namespace Samples.NETCore31
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHealthChecks()
-                .AddUrlGroup(options =>
+                .AddUrlGroupWithVersioning(options =>
                 {
                     options.AddUri(new Uri("https://www.google.com"), setup =>
                     {

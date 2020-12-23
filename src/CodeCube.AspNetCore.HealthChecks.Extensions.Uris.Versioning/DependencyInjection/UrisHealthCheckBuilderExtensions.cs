@@ -23,7 +23,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.Dependency
         /// <param name="tags">A list of tags that can be used to filter sets of health checks. Optional.</param>
         /// <param name="timeout">An optional System.TimeSpan representing the timeout of the check.</param>
         /// <returns>The <see cref="IHealthChecksBuilder"/>.</returns></param>
-        public static IHealthChecksBuilder AddUrlGroup(this IHealthChecksBuilder builder, Uri uri, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
+        public static IHealthChecksBuilder AddUrlGroupWithVersioning(this IHealthChecksBuilder builder, Uri uri, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
         {
             builder.Services.AddHttpClient();
 
@@ -55,7 +55,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.Dependency
         /// <param name="tags">A list of tags that can be used to filter sets of health checks. Optional.</param>
         /// <param name="timeout">An optional System.TimeSpan representing the timeout of the check.</param>
         /// <returns>The <see cref="IHealthChecksBuilder"/>.</returns></param>
-        public static IHealthChecksBuilder AddUrlGroup(this IHealthChecksBuilder builder, Uri uri, HttpMethod httpMethod, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
+        public static IHealthChecksBuilder AddUrlGroupWithVersioning(this IHealthChecksBuilder builder, Uri uri, HttpMethod httpMethod, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
         {
             builder.Services.AddHttpClient();
 
@@ -87,7 +87,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.Dependency
         /// <param name="tags">A list of tags that can be used to filter sets of health checks. Optional.</param>
         /// <param name="timeout">An optional System.TimeSpan representing the timeout of the check.</param>
         /// <returns>The <see cref="IHealthChecksBuilder"/>.</returns></param>
-        public static IHealthChecksBuilder AddUrlGroup(this IHealthChecksBuilder builder, IEnumerable<Uri> uris, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
+        public static IHealthChecksBuilder AddUrlGroupWithVersioning(this IHealthChecksBuilder builder, IEnumerable<Uri> uris, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
         {
             builder.Services.AddHttpClient();
 
@@ -113,7 +113,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.Dependency
         /// <param name="tags">A list of tags that can be used to filter sets of health checks. Optional.</param>
         /// <param name="timeout">An optional System.TimeSpan representing the timeout of the check.</param>
         /// <returns>The <see cref="IHealthChecksBuilder"/>.</returns></param>
-        public static IHealthChecksBuilder AddUrlGroup(this IHealthChecksBuilder builder, IEnumerable<Uri> uris, HttpMethod httpMethod, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
+        public static IHealthChecksBuilder AddUrlGroupWithVersioning(this IHealthChecksBuilder builder, IEnumerable<Uri> uris, HttpMethod httpMethod, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
         {
             builder.Services.AddHttpClient();
 
@@ -145,7 +145,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.Dependency
         /// <param name="tags">A list of tags that can be used to filter sets of health checks. Optional.</param>
         /// <param name="timeout">An optional System.TimeSpan representing the timeout of the check.</param>
         /// <returns>The <see cref="IHealthChecksBuilder"/>.</returns></param>
-        public static IHealthChecksBuilder AddUrlGroup(this IHealthChecksBuilder builder, Action<UriHealthCheckOptions> uriOptions, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
+        public static IHealthChecksBuilder AddUrlGroupWithVersioning(this IHealthChecksBuilder builder, Action<UriHealthCheckOptions> uriOptions, string name = default, HealthStatus? failureStatus = default, IEnumerable<string> tags = default, TimeSpan? timeout = default)
         {
             builder.Services.AddHttpClient();
 
@@ -175,7 +175,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.Dependency
         /// <param name="tags">A list of tags that can be used to filter sets of health checks. Optional.</param>
         /// <param name="timeout">An optional System.TimeSpan representing the timeout of the check.</param>
         /// <returns></returns>
-        public static IHealthChecksBuilder AddUrlGroup(
+        public static IHealthChecksBuilder AddUrlGroupWithVersioning(
             this IHealthChecksBuilder builder,
             Func<IServiceProvider, Uri> uriProvider,
             string name = null,
