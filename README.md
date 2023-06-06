@@ -1,19 +1,19 @@
 # CodeCube.AspNetCore.HealthChecks.Extensions
-Small library with extensions on AspNetCore.Diagnostics.HealthChecks
+Small library with extensions on AspNetCore.Diagnostics.HealthChecks. The following packages are available;
 
-**CodeCube.AspNetCore.HealthChecks.Extensions.Response
+**CodeCube.AspNetCore.HealthChecks.Extensions.Response**
 
 ![Nuget](https://img.shields.io/nuget/dt/CodeCube.AspNetCore.HealthChecks.Extensions.Response?style=for-the-badge)
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/CodeCube.AspNetCore.HealthChecks.Extensions.Response?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions?style=for-the-badge)
 
-**CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
+**CodeCube.AspNetCore.HealthChecks.Extensions.Versioning**
 
 ![Nuget](https://img.shields.io/nuget/dt/CodeCube.AspNetCore.HealthChecks.Extensions.Versioning?style=for-the-badge)
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/CodeCube.AspNetCore.HealthChecks.Extensions.Versioning?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions?style=for-the-badge)
 
-**CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning
+**CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning**
 
 ![Nuget](https://img.shields.io/nuget/dt/CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning?style=for-the-badge)
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning?style=for-the-badge)
