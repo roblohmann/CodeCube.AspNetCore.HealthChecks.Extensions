@@ -43,7 +43,6 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
         /// The calling assembly is used to get the versionnumber.
         /// </summary>
         /// <param name="app"></param>
-        /// <param name="path">The path you want the middleware to respond to.</param>
         /// <param name="responseAsJson">Should the response be outputted as JSON?</param>
         /// <returns></returns>
         public static IApplicationBuilder UseHealthChecksWithVersioning(this IApplicationBuilder app, bool responseAsJson = true)
