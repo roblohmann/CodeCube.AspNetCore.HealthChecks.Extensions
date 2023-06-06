@@ -38,6 +38,21 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
             return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(assemblyName, responseAsJson) });
         }
 
+        /// <summary>
+        /// Adds a middleware that provides healthcheck status, default response is as JSON.
+        /// The calling assembly is used to get the versionnumber.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="path">The path you want the middleware to respond to.</param>
+        /// <param name="responseAsJson">Should the response be outputted as JSON?</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseHealthChecksWithVersioning(this IApplicationBuilder app, bool responseAsJson = true)
+        {
+            var callingAssemblyName = Assembly.GetCallingAssembly().GetName().Name;
+
+            return app.UseHealthChecks(callingAssemblyName, new HealthCheckOptions { ResponseWriter = CreateResponse(responseAsJson: responseAsJson) });
+        }
+
 
         #region privates
         private static Func<HttpContext, HealthReport, Task> CreateResponse(string assemblyName = null, bool responseAsJson = false)
