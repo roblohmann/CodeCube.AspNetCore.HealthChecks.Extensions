@@ -1,21 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 
-    <Authors>Rob Lohmann</Authors>
-    <PackageIconUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</RepositoryUrl>
-    <PackageTags>aspnetcore healthcheck responsewriter</PackageTags>
-    <Description>CodeCube.AspNetCore.HealthChecks.Extensions.Response is a simple package which add responsewriters to Microsoft.AspNetCore.HealthChecks</Description>
-  </PropertyGroup>
+		<Authors>Rob Lohmann</Authors>
+		<PackageIconUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
+		<PackageProjectUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</RepositoryUrl>
+		<PackageTags>aspnetcore healthcheck responsewriter</PackageTags>
+		<Description>CodeCube.AspNetCore.HealthChecks.Extensions.Response is a simple package which add responsewriters to Microsoft.AspNetCore.HealthChecks</Description>
+	</PropertyGroup>
 
-  <ItemGroup>
-	  <!--<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />-->
-	  <FrameworkReference Include="Microsoft.AspNetCore.App" />
-	  <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="5.0.1" />
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup Condition = "'$(TargetFramework)' == 'net6.0'">
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.19" />
+	</ItemGroup>
+	<ItemGroup Condition = "'$(TargetFramework)' == 'net7.0'">
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="7.0.8" />
+	</ItemGroup>
 
 </Project>
