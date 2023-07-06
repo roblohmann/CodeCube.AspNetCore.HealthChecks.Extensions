@@ -62,7 +62,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Response
             var result = $"{healthReport.Status} | Version: {version}";
 
             if (healthReport.Entries.Count <= 0) return result;
-            
+
             result = $"{result} | Entries: ";
             foreach (var entry in healthReport.Entries)
             {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29326.143
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{1CC10C99-2662-4C24-9B9B-50425E8C1968}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,15 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{AC757C99-1BA8-4677-A60D-A31A0F4F0508}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCube.AspNetCore.HealthChecks.Extensions.Response", "src\CodeCube.AspNetCore.HealthChecks.Extensions.Response\CodeCube.AspNetCore.HealthChecks.Extensions.Response.csproj", "{2043ED7B-BBB3-414D-A203-A99097FDDE71}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning", "src\CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning\CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.csproj", "{D60608F7-6328-43D7-A200-35739BF1C929}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCube.AspNetCore.HealthChecks.Extensions.Versioning", "src\CodeCube.AspNetCore.HealthChecks.Extensions.Versioning\CodeCube.AspNetCore.HealthChecks.Extensions.Versioning.csproj", "{F72388CD-B702-4B29-83DE-E63C3AA2DD43}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.NETCore31", "samples\Samples.NETCore31\Samples.NETCore31.csproj", "{3E1A0C3E-5D78-4F9D-BE62-3F970BD76093}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,16 +35,9 @@ Global
 		{F72388CD-B702-4B29-83DE-E63C3AA2DD43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F72388CD-B702-4B29-83DE-E63C3AA2DD43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F72388CD-B702-4B29-83DE-E63C3AA2DD43}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E1A0C3E-5D78-4F9D-BE62-3F970BD76093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E1A0C3E-5D78-4F9D-BE62-3F970BD76093}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E1A0C3E-5D78-4F9D-BE62-3F970BD76093}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E1A0C3E-5D78-4F9D-BE62-3F970BD76093}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{3E1A0C3E-5D78-4F9D-BE62-3F970BD76093} = {AC757C99-1BA8-4677-A60D-A31A0F4F0508}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2D12A09-7048-4A70-9BD7-20EA86BB357F}
