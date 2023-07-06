@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
-using CodeCube.AspNetCore.HealthChecks.Extensions.Response;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
