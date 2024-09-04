@@ -54,7 +54,7 @@ jobs:
     needs: [build]
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: nupkg
       - name: Push to GitHub Feed
