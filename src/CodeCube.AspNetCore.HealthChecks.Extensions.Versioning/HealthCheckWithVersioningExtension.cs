@@ -20,7 +20,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
         /// <param name="path">The path you want the middleware to respond to.</param>
         /// <param name="responseAsJson">Should the response be outputted as JSON?</param>
         /// <returns></returns>
-        public static IApplicationBuilder UseHealthChecksWithVersioning(this IApplicationBuilder app, string path, bool responseAsJson = false)
+        public static IApplicationBuilder UseHealthChecksWithVersioning(this IApplicationBuilder app, string path, bool responseAsJson)
         {
             return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(responseAsJson: responseAsJson) });
         }
@@ -36,6 +36,20 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
         public static IApplicationBuilder UseHealthChecksWithVersioning(this IApplicationBuilder app, string path, string assemblyName, bool responseAsJson = false)
         {
             return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(assemblyName, responseAsJson) });
+        }
+
+        /// <summary>
+        /// Adds a middleware that provides healthcheck status.
+        /// The calling assembly is used to get the versionnumber.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="path">The path you want the middleware to respond to.</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseHealthChecksWithVersioning(this IApplicationBuilder app, string path)
+        {
+            var callingAssemblyName = Assembly.GetCallingAssembly().GetName().Name;
+
+            return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(callingAssemblyName, true) });
         }
 
 

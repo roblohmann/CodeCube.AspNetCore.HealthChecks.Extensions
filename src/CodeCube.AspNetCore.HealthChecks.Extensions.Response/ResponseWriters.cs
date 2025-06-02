@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Newtonsoft.Json;
 
 namespace CodeCube.AspNetCore.HealthChecks.Extensions.Response
 {
@@ -33,10 +34,9 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Response
 
         private static string CreateResponseAsJSON(HealthReport healthReport, string version)
         {
-            var settings = new JsonSerializerSettings
+            var settings = new JsonSerializerOptions
             {
-                NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.Ignore
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
             };
 
             var objectToSerialize = new HealthResponse
@@ -54,7 +54,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Response
             };
 
 
-            return JsonConvert.SerializeObject(objectToSerialize, settings);
+            return JsonSerializer.Serialize(objectToSerialize, settings);
         }
 
         private static string CreateResponseAsText(HealthReport healthReport, string version)
@@ -62,7 +62,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Response
             var result = $"{healthReport.Status} | Version: {version}";
 
             if (healthReport.Entries.Count <= 0) return result;
-            
+
             result = $"{result} | Entries: ";
             foreach (var entry in healthReport.Entries)
             {
