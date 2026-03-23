@@ -1,20 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-
+        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Authors>Rob Lohmann</Authors>
+        <Copyright>2020 - 2026</Copyright>
         <PackageIconUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
         <PackageProjectUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</PackageProjectUrl>
         <RepositoryUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</RepositoryUrl>
         <PackageTags>aspnetcore healthcheck url urlgroup uri</PackageTags>
         <Description>CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning is a simple health check package for URL's with the extra ability to return versionnumbers in the responsedata as well.</Description>
     </PropertyGroup>
+    
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.36" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.1" />
+    </ItemGroup>
 
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.20" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />/>
+    </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.19" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.25" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="9.0.14" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.14" />>
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="10.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.5" />
     </ItemGroup>
 
 </Project>
