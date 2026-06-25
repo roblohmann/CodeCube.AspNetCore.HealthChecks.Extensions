@@ -72,6 +72,11 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
 
         private static IApplicationBuilder ConfigureHealthChecks(IApplicationBuilder app, string path, bool responseAssJson, string? assemblyName)
         {
+            if(!path.StartsWith("/", StringComparison.InvariantCultureIgnoreCase))
+            {
+                path = $"/{path}";
+            }
+
             app.UseHealthChecks($"{path}/ready", new HealthCheckOptions
             {
                 Predicate = healthCheck => healthCheck.Tags.Contains("ready")
