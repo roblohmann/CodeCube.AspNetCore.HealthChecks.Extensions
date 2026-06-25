@@ -71,22 +71,20 @@ public void ConfigureServices(IServiceCollection services)
     services.AddHealthChecks()
         .AddUrlGroupWithVersioning(options =>
         {
-            options.AddUri(new Uri("https://www.my-web-site.com"), setup =>
+            options.AddUri(new Uri("https://first-website.com"), setup =>
             {
                 setup.WithVersioningHeader();
-            }, 
-            "MyWebsite",
-            HealthStatus.Degraded
-            );
-
-            options.AddUri(new Uri("https://www.my-second-website.com"), setup =>
-            {
-                setup.WithVersioningHeader();
+                setup.ExpectHttpCode(200);
             },
-            "MySecondWebsite",
-            HealthStatus.Degraded
+            options.AddUri(new Uri("https://second-website.com"), setup =>
+            {
+                setup.WithVersioningHeader();
+                setup.ExpectHttpCode(204);
+            }
             );
-
-        });
+        }, 
+        name: "TestName",
+        tags: new[] { "ready" }
+        );
 }
 ```

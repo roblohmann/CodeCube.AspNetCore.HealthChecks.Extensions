@@ -77,17 +77,23 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
                 path = $"/{path}";
             }
 
+            var responseWriter = CreateResponse(assemblyName, responseAssJson);
+
             app.UseHealthChecks($"{path}/ready", new HealthCheckOptions
             {
-                Predicate = healthCheck => healthCheck.Tags.Contains("ready")
+                Predicate = healthCheck => healthCheck.Tags.Contains("ready"),
+                ResponseWriter = responseWriter
             });
 
             app.UseHealthChecks($"{path}/live", new HealthCheckOptions
             {
-                Predicate = healthCheck => healthCheck.Tags.Contains("live")
+                Predicate = healthCheck => healthCheck.Tags.Contains("live"),
+                ResponseWriter = responseWriter
             });
 
-            return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(assemblyName, responseAssJson) });
+            return app.UseHealthChecks(path, new HealthCheckOptions {
+                ResponseWriter = responseWriter
+            });
         }
         #endregion
     }
