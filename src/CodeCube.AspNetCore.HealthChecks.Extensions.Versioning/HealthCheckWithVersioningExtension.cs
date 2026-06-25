@@ -22,7 +22,9 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
         /// <returns></returns>
         public static IApplicationBuilder UseHealthChecksWithVersioning(this IApplicationBuilder app, string path, bool responseAsJson)
         {
-            return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(responseAsJson: responseAsJson) });
+            //return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(responseAsJson: responseAsJson) });
+
+            return ConfigureHealthChecks(app, path, responseAsJson, null);
         }
 
         /// <summary>
@@ -35,7 +37,8 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
         /// <returns></returns>
         public static IApplicationBuilder UseHealthChecksWithVersioning(this IApplicationBuilder app, string path, string assemblyName, bool responseAsJson = false)
         {
-            return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(assemblyName, responseAsJson) });
+            //return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(assemblyName, responseAsJson) });
+            return ConfigureHealthChecks(app, path, responseAsJson, assemblyName);
         }
 
         /// <summary>
@@ -49,7 +52,9 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
         {
             var callingAssemblyName = Assembly.GetCallingAssembly().GetName().Name;
 
-            return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(callingAssemblyName, true) });
+            //return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(callingAssemblyName, true) });
+
+            return ConfigureHealthChecks(app, path, true, callingAssemblyName);
         }
 
 
@@ -63,6 +68,21 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
                 return ResponseWriters.AsJson(version);
 
             return ResponseWriters.AsText(version);
+        }
+
+        private static IApplicationBuilder ConfigureHealthChecks(IApplicationBuilder app, string path, bool responseAssJson, string? assemblyName)
+        {
+            app.UseHealthChecks($"{path}/ready", new HealthCheckOptions
+            {
+                Predicate = healthCheck => healthCheck.Tags.Contains("ready")
+            });
+
+            app.UseHealthChecks($"{path}/live", new HealthCheckOptions
+            {
+                Predicate = healthCheck => healthCheck.Tags.Contains("live")
+            });
+
+            return app.UseHealthChecks(path, new HealthCheckOptions { ResponseWriter = CreateResponse(assemblyName, responseAssJson) });
         }
         #endregion
     }
