@@ -1,0 +1,52 @@
+name: Release
+
+# Push a tag <Project>/vX.Y.Z (matching <VersionPrefix> in that csproj) to publish one package to nuget.org.
+
+on:
+  push:
+    tags: ['*/v*']
+
+permissions:
+  contents: read
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    outputs:
+      project: ${{ steps.r.outputs.project }}
+      version: ${{ steps.r.outputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+      - id: r
+        run: |
+          name="${GITHUB_REF_NAME%%/v*}"
+          version="${GITHUB_REF_NAME##*/v}"
+          case "$name" in
+            Response)        p=src/CodeCube.AspNetCore.HealthChecks.Extensions.Response/CodeCube.AspNetCore.HealthChecks.Extensions.Response.csproj ;;
+            Uris.Versioning) p=src/CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning/CodeCube.AspNetCore.HealthChecks.Extensions.Uris.Versioning.csproj ;;
+            Versioning)      p=src/CodeCube.AspNetCore.HealthChecks.Extensions.Versioning/CodeCube.AspNetCore.HealthChecks.Extensions.Versioning.csproj ;;
+            *) echo "::error::Unknown project '$name' in tag $GITHUB_REF_NAME"; exit 1 ;;
+          esac
+          prefix=$(grep -oP '(?<=<VersionPrefix>)[^<]+' "$p")
+          if [ "$version" != "$prefix" ]; then
+            echo "::error::Tag version $version does not match VersionPrefix $prefix in $p"; exit 1
+          fi
+          echo "project=$p" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+  pack:
+    needs: resolve
+    uses: roblohmann/codecube-workflows/.github/workflows/nuget-pack.yml@v1
+    with:
+      project: ${{ needs.resolve.outputs.project }}
+      version: ${{ needs.resolve.outputs.version }}
+
+  publish:
+    needs: pack
+    runs-on: ubuntu-latest
+    environment: nuget.org
+    permissions:
+      id-token: write   # OIDC token for nuget.org Trusted Publishing
+      contents: read
+    steps:
+      - uses: roblohmann/codecube-workflows/.github/actions/nuget-publish@v1
