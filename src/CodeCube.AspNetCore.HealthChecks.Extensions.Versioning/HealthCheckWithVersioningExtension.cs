@@ -70,7 +70,7 @@ namespace CodeCube.AspNetCore.HealthChecks.Extensions.Versioning
             return ResponseWriters.AsText(version);
         }
 
-        private static IApplicationBuilder ConfigureHealthChecks(IApplicationBuilder app, string path, bool responseAssJson, string? assemblyName)
+        private static IApplicationBuilder ConfigureHealthChecks(IApplicationBuilder app, string path, bool responseAssJson, string assemblyName)
         {
             if(!path.StartsWith("/", StringComparison.InvariantCultureIgnoreCase))
             {
