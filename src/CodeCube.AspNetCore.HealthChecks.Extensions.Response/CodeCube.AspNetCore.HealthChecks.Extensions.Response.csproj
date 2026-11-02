@@ -6,7 +6,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Authors>Rob Lohmann</Authors>
         <Copyright>2020 - 2026</Copyright>
-        <PackageIconUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
+        <PackageIcon>nuget-icon.png</PackageIcon>
         <PackageProjectUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</PackageProjectUrl>
         <RepositoryUrl>https://github.com/roblohmann/CodeCube.AspNetCore.HealthChecks.Extensions</RepositoryUrl>
         <PackageTags>aspnetcore healthcheck responsewriter</PackageTags>
@@ -37,4 +37,8 @@
         <PackageReference Include="System.Text.Json" Version="10.0.5" />
     </ItemGroup>
     
+  <ItemGroup>
+    <None Include="../../nuget-icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+
 </Project>
