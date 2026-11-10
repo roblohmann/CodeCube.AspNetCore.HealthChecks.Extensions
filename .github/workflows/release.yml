@@ -16,7 +16,7 @@ jobs:
       project: ${{ steps.r.outputs.project }}
       version: ${{ steps.r.outputs.version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - id: r
         run: |
           name="${GITHUB_REF_NAME%%/v*}"
