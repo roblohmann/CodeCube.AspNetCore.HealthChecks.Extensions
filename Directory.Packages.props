@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="CodeCube.AspNetCore.HealthChecks.Extensions.Response" Version="8.0.4" />
+    <PackageVersion Include="CodeCube.AspNetCore.HealthChecks.Extensions.Response" Version="8.0.5" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.14" />
   </ItemGroup>
 
